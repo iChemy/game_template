@@ -32,13 +32,18 @@ int node::depth_first() {
 
                 node child = node(target_player, OPPOSITE_PLAYER(who_did), f, depth - 1);
 
+                // <- who_did が自分ならこれは敵が打った手
+                // who_did が敵ならこれは自分が打った手
                 int child_score = child.depth_first();
 
+                
                 if (target_player == who_did) {
+                    // who_did が自分なので 敵が打った手なので評価値が最小の手がくるべき
                     if (score > child_score) {
                         score = child_score;
                     }
                 } else {
+                    // who_did が敵なので 自分が最高の手を選ぶ必要がある
                     if (score < child_score) {
                         score = child_score;
                     }

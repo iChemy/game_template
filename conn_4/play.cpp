@@ -130,7 +130,7 @@ void ai_play::start() {
         std::cout << "score for " << current_player << ": " << score << std::endl;
 
         if (f.is_win(current_player)) {
-            std::cout << current_player << "win" << std::endl;
+            std::cout << current_player << " win" << std::endl;
 
             break;
         }
