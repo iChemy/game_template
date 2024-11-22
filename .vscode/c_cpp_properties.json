@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${default}",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/c++/v1"
+            ]
+        }
+    ],
+    "version": 4
+}
