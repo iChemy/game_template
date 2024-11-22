@@ -53,8 +53,10 @@ void play::start() {
 
         evaluator e(f);
         int score = e.evaluate(current_player);
-
         std::cout << "score for " << current_player << ": " << score << std::endl;
+
+        score = e.evaluate(OPPOSITE_PLAYER(current_player));
+        std::cout << "score for " << OPPOSITE_PLAYER(current_player) << ": " << score << std::endl;
 
         if (f.is_win(current_player)) {
             std::cout << current_player << "win" << std::endl;
@@ -83,7 +85,7 @@ void ai_play::start() {
 
         if (is_ai_turn()) {
             char best_col = 3;
-            int best_score = -1 * VERY_BIG_SCORE;
+            int best_score = -1 * VERY_BIG_SCORE - 1;
 
             std::cout << "AI(" << current_player << ") turn" << std::endl;
 

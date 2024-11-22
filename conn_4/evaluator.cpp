@@ -24,6 +24,8 @@ int evaluator::evaluate(player p) const {
 
             score += two_in_a_row_count(me_tmp);
 
+            score += three_in_a_row_count(me_tmp);
+
             score += four_in_a_row_count(me_tmp);
         }
         // 左右摂動
@@ -31,6 +33,8 @@ int evaluator::evaluate(player p) const {
             bit_field me_tmp = me & ~(right_perturbation(op) | left_perturbation(op)) & BIT_FIELD_MASK;
 
             score += two_in_a_row_count(me_tmp);
+
+            score += three_in_a_row_count(me_tmp);
 
             score += four_in_a_row_count(me_tmp);
         }
@@ -40,6 +44,8 @@ int evaluator::evaluate(player p) const {
 
             score += two_in_a_row_count(me_tmp);
 
+            score += three_in_a_row_count(me_tmp);
+
             score += four_in_a_row_count(me_tmp);
         }
         // / 方向摂動
@@ -47,6 +53,8 @@ int evaluator::evaluate(player p) const {
             bit_field me_tmp = me & ~(right_up_perturbation(op) | left_down_perturbation(op)) & BIT_FIELD_MASK;
 
             score += two_in_a_row_count(me_tmp);
+
+            score += three_in_a_row_count(me_tmp);
 
             score += four_in_a_row_count(me_tmp);
         }
@@ -59,29 +67,37 @@ int evaluator::evaluate(player p) const {
 
             score -= two_in_a_row_count(op_tmp);
 
+            score -= three_in_a_row_count(op_tmp);
+
             score -= four_in_a_row_count(op_tmp);
         }
         // 左右摂動
         {
-            bit_field op_tmp = me & ~(right_perturbation(me) | left_perturbation(me)) & BIT_FIELD_MASK;
+            bit_field op_tmp = op & ~(right_perturbation(me) | left_perturbation(me)) & BIT_FIELD_MASK;
 
             score -= two_in_a_row_count(op_tmp);
+
+            score -= three_in_a_row_count(op_tmp);
 
             score -= four_in_a_row_count(op_tmp);
         }
         // \ 方向摂動
         {
-            bit_field op_tmp = me & ~(left_up_perturbation(me) | right_down_perturbation(me)) & BIT_FIELD_MASK;
+            bit_field op_tmp = op & ~(left_up_perturbation(me) | right_down_perturbation(me)) & BIT_FIELD_MASK;
 
             score -= two_in_a_row_count(op_tmp);
+
+            score -= three_in_a_row_count(op_tmp);
 
             score -= four_in_a_row_count(op_tmp);
         }
         // / 方向摂動
         {
-            bit_field op_tmp = me & ~(right_up_perturbation(me) | left_down_perturbation(me)) & BIT_FIELD_MASK;
+            bit_field op_tmp = op & ~(right_up_perturbation(me) | left_down_perturbation(me)) & BIT_FIELD_MASK;
 
             score -= two_in_a_row_count(op_tmp);
+
+            score -= three_in_a_row_count(op_tmp);
 
             score -= four_in_a_row_count(op_tmp);
         }

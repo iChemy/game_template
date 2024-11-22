@@ -22,7 +22,7 @@ int node::depth_first() {
             }
         }
 
-        int score = (target_player != who_did) ? -1 * VERY_BIG_SCORE : VERY_BIG_SCORE;
+        int score = (target_player != who_did) ? -1 * VERY_BIG_SCORE - 1 : VERY_BIG_SCORE + 1;
 
         for (char i = 0; i < FIELD_COL_NUMBER; i++) {
 
