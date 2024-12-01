@@ -84,28 +84,13 @@ void ai_play::start() {
         char col;
 
         if (is_ai_turn()) {
-            char best_col = 3;
-            int best_score = -1 * VERY_BIG_SCORE - 1;
-
             std::cout << "AI(" << current_player << ") turn" << std::endl;
 
-            for (char i = 0; i < FIELD_COL_NUMBER; i++) {
-                if (f.is_pilable(i)) {
-                    field child_f = field(f);
-                    child_f.pile(i, current_player);
+            node n = node(player::BLUE, current_player, f, depth);
 
-                    node n = node(player::BLUE, current_player, child_f, depth);
+            node_res_t res = n.depth_first();
 
-                    int tmp = n.depth_first();
-
-                    if (tmp > best_score) {
-                        best_score = tmp;
-                        best_col = i;
-                    }
-                }
-            }
-
-            col = best_col;
+            col = res.col;
 
             std::cout << "AI choose " << (int)col << std::endl;
         } else {

@@ -3,7 +3,7 @@
 
 int main()
 {
-    ai_play ai = ai_play(4);
+    ai_play ai = ai_play(5);
     ai.start();
     return 0;
 }

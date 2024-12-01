@@ -4,18 +4,26 @@
 #include "def.hpp"
 #include "evaluator.hpp"
 
+struct node_res_t
+{
+    int score; // target_player にとってのスコア
+    char col; // それを実現する列 (root node 以外では需要ない...)
+};
+
+
 class node {
     const player target_player;
-    const player who_did;
+    /// @brief 誰が手を打とうとしているか
+    const player who_play;
 
-    /// @brief who_did が最後に手を打って作り出したフィールド
+    /// @brief フィールド (親から生成された)
     const field &target_field;
 
     const int depth;
 
 public:
     node(player p1, player p2, const field &f, int d);
-    int depth_first();
+    node_res_t depth_first();
 };
 
 #endif
