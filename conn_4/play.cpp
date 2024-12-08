@@ -86,7 +86,9 @@ void ai_play::start() {
         if (is_ai_turn()) {
             std::cout << "AI(" << current_player << ") turn" << std::endl;
 
-            node n = node(player::BLUE, current_player, f, depth);
+            // node n = node(player::BLUE, current_player, f, depth);
+
+            random_node n = random_node(player::BLUE, current_player, f, depth);
 
             node_res_t res = n.depth_first();
 

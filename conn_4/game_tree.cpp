@@ -3,12 +3,12 @@
 #include "game_tree.hpp"
 
 node::node(player p1, player p2, const field &f, int d):
-    target_player(p1), who_play(p2), target_field(f), depth(d)
+    target_player(p1), who_play(p2), target_field(f), depth(d), e(evaluator(nullptr))
 {}
 
 node_res_t node::depth_first() {
     if (depth == 0) {
-        evaluator e(target_field);
+        e.set_field(target_field);
 
         // 手を打った人にとっての価値
         return {.score=e.evaluate(target_player), .col=0};
@@ -55,4 +55,13 @@ node_res_t node::depth_first() {
 
         return {score, col};
     }
+}
+
+random_node::random_node(player p1, player p2, const field &f, int d): node(p1, p2, f, d)
+{
+    e = random_evaluator(nullptr);
+}
+
+node_res_t random_node::depth_first() {
+   return node::depth_first();
 }

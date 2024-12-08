@@ -21,9 +21,18 @@ class node {
 
     const int depth;
 
+protected:
+    evaluator e;
+
 public:
     node(player p1, player p2, const field &f, int d);
     node_res_t depth_first();
+};
+
+class random_node: public node {
+public:
+    random_node(player p1, player p2, const field &f, int d);   
+    node_res_t depth_first(); 
 };
 
 #endif
